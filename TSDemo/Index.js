@@ -8,10 +8,22 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var Utils;
+(function (Utils) {
+    var Notifications = (function () {
+        function Notifications() {
+        }
+        Notifications.prototype.alert = function (s) {
+            alert(s);
+        };
+        return Notifications;
+    })();
+    Utils.Notifications = Notifications;
+})(Utils || (Utils = {}));
 var Models;
 (function (Models) {
     var Person;
-    (function (Person_1) {
+    (function (_Person) {
         var Person = (function () {
             function Person(fn, ln) {
                 this.firstName = fn;
@@ -37,7 +49,7 @@ var Models;
             };
             return Person;
         })();
-        Person_1.Person = Person;
+        _Person.Person = Person;
         var Subscriber = (function (_super) {
             __extends(Subscriber, _super);
             function Subscriber(fn, ln) {
@@ -56,7 +68,7 @@ var Models;
             };
             return Subscriber;
         })(Person);
-        Person_1.Subscriber = Subscriber;
+        _Person.Subscriber = Subscriber;
         var Department = (function () {
             function Department() {
                 this.people = [];
@@ -73,7 +85,7 @@ var Models;
             };
             return Department;
         })();
-        Person_1.Department = Department;
+        _Person.Department = Department;
     })(Person = Models.Person || (Models.Person = {}));
 })(Models || (Models = {}));
 function showEmails(p) {
@@ -100,5 +112,12 @@ $(document).ready(function () {
     var team = new Person.Department();
     var teamCount = team.addPerson(new Person.Person("Steve", "Fabian"), new Person.Person("Dave", "Smith"), new Person.Subscriber("John", "Doe"));
     $("#greeting4").html("Team Members: " + teamCount.toString());
+    var vm = {
+        msg: ko.observable("Knockout!"),
+        team: ko.observableArray(team.people),
+    };
+    ko.applyBindings(vm);
+    var alerter = new Utils.Notifications();
+    alerter.alert(vm.msg());
 });
 //# sourceMappingURL=Index.js.map

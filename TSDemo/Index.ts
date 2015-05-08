@@ -3,6 +3,14 @@
 //var z: number = x + y;
 //alert(z);
 
+module Utils {
+    export class Notifications {
+        alert(s: string): void {
+            alert(s);
+        }
+    }
+}
+
 module Models.Person {
 
     export interface IPerson {
@@ -95,5 +103,19 @@ $(document).ready(() => {
         );
 
     $("#greeting4").html("Team Members: " + teamCount.toString());
+
+
+
+    var vm = {
+
+        msg: ko.observable("Knockout!"),
+        team: ko.observableArray(team.people),
+
+    }
+
+    ko.applyBindings(vm);
+
+    var alerter = new Utils.Notifications();
+    alerter.alert(vm.msg());
 
 });
