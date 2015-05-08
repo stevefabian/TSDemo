@@ -23,7 +23,7 @@ var Utils;
 var Models;
 (function (Models) {
     var Person;
-    (function (_Person) {
+    (function (Person_1) {
         var Person = (function () {
             function Person(fn, ln) {
                 this.firstName = fn;
@@ -49,7 +49,7 @@ var Models;
             };
             return Person;
         })();
-        _Person.Person = Person;
+        Person_1.Person = Person;
         var Subscriber = (function (_super) {
             __extends(Subscriber, _super);
             function Subscriber(fn, ln) {
@@ -68,7 +68,7 @@ var Models;
             };
             return Subscriber;
         })(Person);
-        _Person.Subscriber = Subscriber;
+        Person_1.Subscriber = Subscriber;
         var Department = (function () {
             function Department() {
                 this.people = [];
@@ -85,7 +85,7 @@ var Models;
             };
             return Department;
         })();
-        _Person.Department = Department;
+        Person_1.Department = Department;
     })(Person = Models.Person || (Models.Person = {}));
 })(Models || (Models = {}));
 function showEmails(p) {
@@ -114,7 +114,7 @@ $(document).ready(function () {
     $("#greeting4").html("Team Members: " + teamCount.toString());
     var vm = {
         msg: ko.observable("Knockout!"),
-        team: ko.observableArray(team.people),
+        team: ko.observableArray(team.people)
     };
     ko.applyBindings(vm);
     var alerter = new Utils.Notifications();

@@ -109,7 +109,7 @@ $(document).ready(() => {
     var vm = {
 
         msg: ko.observable("Knockout!"),
-        team: ko.observableArray(team.people),
+        team: ko.observableArray(team.people)
 
     }
 
